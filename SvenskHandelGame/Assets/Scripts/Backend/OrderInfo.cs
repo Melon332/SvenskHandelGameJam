@@ -29,10 +29,7 @@ public class OrderInfo
         delivered = true;
         OnDelivered?.Invoke();
     }
-    
-    
-    
-    
+
 }
 
 [System.Serializable]

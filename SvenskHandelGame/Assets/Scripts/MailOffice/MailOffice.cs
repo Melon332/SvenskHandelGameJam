@@ -18,7 +18,8 @@ public class MailOffice : MonoBehaviour
         var deliveryTruck = other.GetComponent<VehicleScript>();
         if (deliveryTruck)
         {
-            other.GetComponent<VehicleScript>().isAtMailOffice = true;
+            GameManager.instance.VehicleIsBack(deliveryTruck.vehicleInfo);
+            Destroy(deliveryTruck.gameObject);
         }
     }
 }
