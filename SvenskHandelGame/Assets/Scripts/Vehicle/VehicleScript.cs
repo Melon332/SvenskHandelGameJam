@@ -46,7 +46,6 @@ public abstract class VehicleScript : MonoBehaviour
         else
         {
             agent.SetDestination(office.transform.position);
-            PackageManager.DeliveriesReset();
         }
     }
 }

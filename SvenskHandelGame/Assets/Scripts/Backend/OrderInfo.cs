@@ -47,7 +47,14 @@ public class Consumer
 {
     public string name;
     public Sprite portrait;
-    public Vector3 position;
+    public PackageLocation location;
+    public Vector3 position => location.transform.position;
+
+    public Consumer(PackageLocation location)
+    {
+        this.location = location;
+    }
+    
 }
 
 public enum OrderState

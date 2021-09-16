@@ -41,8 +41,18 @@ public class GameManager : MonoBehaviour
         Initialize();
     }
 
-    void Initialize() 
+    void Initialize()
     {
+
+        var locations = FindObjectsOfType<PackageLocation>();
+
+        foreach (var location in locations)
+        {
+            Consumer consumer = new Consumer(location);
+            location.consumer = consumer;
+            consumers.Add(consumer);
+        }
+
         vehicles = new List<VehicleInfo>();
         foreach (var v in vehiclePresets)
         {
@@ -71,16 +81,15 @@ public class GameManager : MonoBehaviour
         var consumer = consumers[Random.Range(0, consumers.Count)];
         PackageInfo[] package = new PackageInfo[1] {new PackageInfo()};
         OrderInfo order = new OrderInfo(package,consumer);
+        
         //TODO: CREATE ORDER PREFAB
-
+        
     }
 
 
     public void SendVehicle(VehicleInfo vehicleInfo)
     {
         vehicleInfo.Avaliable = false;
-        
-        //TODO: CREATE ACTUAL VEHICLE WITH VEHICLE INFO
         var vehicle = Instantiate(vehiclePrefab, office.transform.position,quaternion.identity);
         vehicle.Init(vehicleInfo);
         
@@ -91,7 +100,10 @@ public class GameManager : MonoBehaviour
         vehicleInfo.Avaliable = true;
     }
 
-
-
-
 }
+public static class GameColors
+{
+    public static Color IdleBuilding = Color.gray;
+    public static Color ActiveBuilding = Color.red;
+}
+

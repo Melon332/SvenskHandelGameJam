@@ -11,15 +11,12 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Button packageButton;
 
-    private PackageManager package;
-
     public PanelPositions[] panelPositions;
 
     void Start()
     {
         _playerManager = FindObjectOfType<PlayerManager>();
         AddRandomizePackageButtonToPanel();
-        package = FindObjectOfType<PackageManager>();
         
     }
 
