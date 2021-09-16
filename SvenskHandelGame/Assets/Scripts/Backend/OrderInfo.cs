@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,17 +6,31 @@ using UnityEngine;
 [System.Serializable]
 public class OrderInfo
 {
-    private PackageInfo[] packages;
+    public Consumer consumer { get; private set;}
+    public PackageInfo[] packages { get; private set;}
     private float timer;
-    private Consumer consumer;
     private OrderState orderState;
     private bool delivered = false;
+
+
+    public Action OnDelivered;
+    
 
     public OrderInfo(PackageInfo[] packages,Consumer consumer)
     {
         this.packages = packages;
         this.consumer = consumer;
     }
+
+
+    public void SetDelivered()
+    {
+        delivered = true;
+        OnDelivered?.Invoke();
+    }
+    
+    
+    
     
 }
 
@@ -32,8 +47,9 @@ public struct PackageInfo
 [System.Serializable]
 public class Consumer
 {
-    private string name;
-    private Sprite portrait;
+    public string name;
+    public Sprite portrait;
+    public Vector3 position;
 }
 
 public enum OrderState

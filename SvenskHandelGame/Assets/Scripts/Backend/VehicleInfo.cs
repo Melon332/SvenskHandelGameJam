@@ -36,6 +36,23 @@ public class VehicleInfo
         orders = new List<OrderInfo>();
         OnReset?.Invoke();
     }
+
+    public List<OrderInfo> getOrders()
+    {
+        return orders;
+    }
+
+    public List<Vector3> GetOrderPositions()
+    {
+        List<Vector3> positionList = new List<Vector3>();
+        foreach (var order in orders)
+        { 
+            positionList.Add(order.consumer.position);
+        }
+        return positionList;
+    }
+    
+    
     
 }
 
