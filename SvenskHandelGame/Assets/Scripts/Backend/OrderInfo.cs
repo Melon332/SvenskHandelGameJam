@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class OrderInfo
 {
-    private Package[] Packages;
+    private PackageInfo[] Packages;
     private float timer;
     private Consumer consumer;
     private OrderState orderState;
     private bool delivered = false;
 
-    public OrderInfo(Package[] packages)
+    public OrderInfo(PackageInfo[] packages)
     {
         packages = packages;
         
     }
-    
-    
+     
     
 }
 
-public struct Package
+public struct PackageInfo
 {
     private int size;
 }
