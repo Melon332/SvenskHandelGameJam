@@ -10,7 +10,7 @@ public class OrderInfo
     public PackageInfo[] packages { get; private set;}
     private float timer;
     private OrderState orderState;
-    private bool delivered = false;
+    public bool delivered { get; private set; }
 
 
     public Action OnDelivered;
@@ -20,6 +20,7 @@ public class OrderInfo
     {
         this.packages = packages;
         this.consumer = consumer;
+        delivered = false;
     }
 
 

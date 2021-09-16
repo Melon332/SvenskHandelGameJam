@@ -46,8 +46,11 @@ public class VehicleInfo
     {
         List<Vector3> positionList = new List<Vector3>();
         foreach (var order in orders)
-        { 
-            positionList.Add(order.consumer.position);
+        {
+            if (!order.delivered)
+            {
+                positionList.Add(order.consumer.position);
+            }
         }
         return positionList;
     }
