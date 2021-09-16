@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private UIVehicle vehicleUI;
 
-    [SerializeField] private MailOffice office;
+    public MailOffice office;
 
     [SerializeField] private GameObject vehicleLayoutGroup;
 
@@ -45,6 +45,10 @@ public class GameManager : MonoBehaviour
     {
 
         var locations = FindObjectsOfType<PackageLocation>();
+
+        consumers = new List<Consumer>();
+
+        orders = new List<OrderInfo>();
 
         foreach (var location in locations)
         {
@@ -111,7 +115,7 @@ public class GameManager : MonoBehaviour
             order.avaliable = false;
         }
         vehicleInfo.Avaliable = false;
-        var vehicle = Instantiate(vehiclePrefab, office.transform.position,quaternion.identity);
+        var vehicle = Instantiate(vehiclePrefab, office.position,quaternion.identity);
         vehicle.Init(vehicleInfo);
         
     }

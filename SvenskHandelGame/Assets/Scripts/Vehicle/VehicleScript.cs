@@ -14,18 +14,13 @@ public abstract class VehicleScript : MonoBehaviour
     public VehicleInfo vehicleInfo;
 
     public bool isDoneDelivering = false;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        agent = GetComponent<NavMeshAgent>();
-    }
-
+    
     public void Init(VehicleInfo info)
     {
+        agent = GetComponent<NavMeshAgent>();
         vehicleInfo = info;
         agent.speed = info.vehicleData.speed;
+        CarMove();
     }
     public void CarMove()
     {
@@ -47,7 +42,7 @@ public abstract class VehicleScript : MonoBehaviour
         }
         else
         {
-            agent.SetDestination(office.transform.position);
+            agent.SetDestination(GameManager.instance.office.position);
             isDoneDelivering = true;
         }
     }

@@ -9,6 +9,8 @@ public class MailOffice : MonoBehaviour
     private PlayerManager _playerManager;
 
     private DeliveryPosition deliveryPosition;
+
+    public Vector3 position => deliveryPosition.transform.position;
     private void Awake()
     {
         _playerManager = FindObjectOfType<PlayerManager>();

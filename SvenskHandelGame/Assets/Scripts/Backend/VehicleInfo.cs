@@ -43,9 +43,6 @@ public class VehicleInfo
 
     public List<OrderInfo> GetOrders()
     {
-        List<OrderInfo>
-        
-        
         return orders.Where(order => !order.delivered).ToList();
     }
 
