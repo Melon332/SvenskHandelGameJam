@@ -6,38 +6,51 @@ public class PackageManager : MonoBehaviour
 {
     public List<PackageLocations> locationsList = new List<PackageLocations>();
 
-    public List<Package> avaliablePackageToRandomize = new List<Package>();
+    public List<Package> avaliablePackagesToRandomize = new List<Package>();
 
-    private PlayerManager _playerManager;
+    public static bool hasNoDeliveriesLeft = false;
     // Start is called before the first frame update
     void Start()
     {
-        AddRandomPackageToCitizen();
-
-        _playerManager = FindObjectOfType<PlayerManager>();
-
-        foreach (var teststuff in locationsList)
-        {
-            Debug.Log(teststuff.packageWanted.nameOfPackage);
-        }
+        InvokeRepeating(nameof(AddRandomPackageToCitizen),0,15);
     }
 
     private void AddRandomPackageToCitizen()
     {
-        foreach (var packageLocation in locationsList)
+        if (!hasNoDeliveriesLeft)
         {
-            packageLocation.packageWanted = avaliablePackageToRandomize[Random.Range(0,avaliablePackageToRandomize.Count)];
+            foreach (var packageLocation in locationsList)
+            {
+                for (int i = 0; i < packageLocation.amountOfPackageWanted; i++)
+                {
+                    packageLocation.packageWanted.Add(
+                        avaliablePackagesToRandomize[Random.Range(0, avaliablePackagesToRandomize.Count)]);
+                }
+            }
+            DeliveriesReset();
         }
     }
 
     public PackageLocations GetPackage()
     {
-        var package = locationsList[Random.Range(0, locationsList.Count)];
-        if (package)
+        foreach (var location in locationsList)
         {
-            return locationsList[Random.Range(0, locationsList.Count)];
+            if (location.packageWanted.Count > 0 && !location.hasBeenUsed)
+            {
+                location.HasBeenActivated();
+                return location;
+            }
         }
-
         return null;
+    }
+
+    public static void DeliveriesReset()
+    {
+        hasNoDeliveriesLeft = true;
+    }
+
+    public static void NoDeliveriesLeft()
+    {
+        hasNoDeliveriesLeft = false;
     }
 }

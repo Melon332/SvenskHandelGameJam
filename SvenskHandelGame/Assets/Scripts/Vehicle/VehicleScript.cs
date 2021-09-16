@@ -8,6 +8,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Rigidbody))]
 public abstract class VehicleScript : MonoBehaviour
 {
+    [HideInInspector] public MailOffice office;
     private NavMeshAgent agent;
     
     public float speed = 18f;
@@ -17,6 +18,8 @@ public abstract class VehicleScript : MonoBehaviour
     public List<Package> packages = new List<Package>();
 
     public int maxAllowedOfPackages;
+
+    [HideInInspector] public bool isAtMailOffice = true;
     
 
     // Start is called before the first frame update
@@ -35,23 +38,28 @@ public abstract class VehicleScript : MonoBehaviour
         }
         else
         {
+            agent.SetDestination(office.transform.position);
+            PackageManager.DeliveriesReset();
             Debug.Log("Hello");
         }
     }
 
-    public void AddPackageToCar(Package package)
+    public void AddPackageToCar(List<Package> package)
     {
-        if (packages.Count < maxAllowedOfPackages)
+        foreach (var packagesToAdd in package)
         {
-            packages.Add(package);
-        }
-        else
-        {
-            Debug.Log("I am full!");
+            if (packages.Count < maxAllowedOfPackages)
+            {
+                packages.Add(packagesToAdd);
+            }
+            else
+            {
+                Debug.Log("I am full!");
+            }   
         }
     }
 
-    public void AddLocationForCar(GameObject location)
+    public void AddLocationToCar(GameObject location)
     {
         if (!positions.Contains(location))
         {

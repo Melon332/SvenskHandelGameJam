@@ -2,15 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(BoxCollider))]
 public class PackageLocations : MonoBehaviour
 {
-    public Package packageWanted;
+    public List<Package> packageWanted = new List<Package>();
 
     private bool hasBeenPassed;
+
+    public int amountOfPackageWanted;
+    
+    [HideInInspector] public bool hasBeenUsed = false;
     private void Awake()
     {
+        amountOfPackageWanted = Random.Range(2, 5);
         FindObjectOfType<PackageManager>().locationsList.Add(this);
     }
     private void OnTriggerEnter(Collider other)
@@ -24,15 +30,29 @@ public class PackageLocations : MonoBehaviour
             car.CarMove(car.positions);
             hasBeenPassed = true;
             //Removes the contained package
-            if (car.packages.Contains(packageWanted))
+            foreach (var package in packageWanted)
             {
-                car.packages.Remove(packageWanted);
-                packageWanted = null;
+                if (car.packages.Contains(package))
+                {
+                    car.packages.Remove(package);
+                }   
+                else
+                {
+                    Debug.Log("Oh no!");
+                }
             }
-            else
-            {
-                Debug.Log("Oh no!");
-            }
+            packageWanted.Clear();
         }
+    }
+
+    public void HasBeenActivated()
+    {
+        hasBeenUsed = true;
+        GetComponent<MeshRenderer>().material.color = Color.red;
+    }
+
+    public void HasBeenDeactivated()
+    {
+        hasBeenUsed = false;
     }
 }
