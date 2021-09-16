@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleData:
     size: 2
-    speed: 0.5
+    speed: 10
     carbonFootprint: 0
