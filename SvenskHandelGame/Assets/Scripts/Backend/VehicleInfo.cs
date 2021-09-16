@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -37,22 +38,20 @@ public class VehicleInfo
         OnReset?.Invoke();
     }
 
-    public List<OrderInfo> getOrders()
+    public List<OrderInfo> GetOrders()
     {
-        return orders;
+        return orders.Where(order => !order.delivered).ToList();
     }
+
+    public bool ShouldLeavePackage(Consumer consumer)
+    {
+        return orders.Any(order => !order.delivered && consumer == order.consumer);
+    }
+    
 
     public List<Vector3> GetOrderPositions()
     {
-        List<Vector3> positionList = new List<Vector3>();
-        foreach (var order in orders)
-        {
-            if (!order.delivered)
-            {
-                positionList.Add(order.consumer.position);
-            }
-        }
-        return positionList;
+        return (from order in orders where !order.delivered select order.consumer.position).ToList();
     }
     
     
