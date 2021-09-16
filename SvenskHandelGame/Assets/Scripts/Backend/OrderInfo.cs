@@ -1,33 +1,56 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class OrderInfo
 {
-    private PackageInfo[] Packages;
+    public Consumer consumer { get; private set;}
+    public PackageInfo[] packages { get; private set;}
     private float timer;
-    private Consumer consumer;
     private OrderState orderState;
-    private bool delivered = false;
+    public bool delivered { get; private set; }
 
-    public OrderInfo(PackageInfo[] packages)
+
+    public Action OnDelivered;
+    
+
+    public OrderInfo(PackageInfo[] packages,Consumer consumer)
     {
-        packages = packages;
-        
+        this.packages = packages;
+        this.consumer = consumer;
+        delivered = false;
     }
-     
+
+
+    public void SetDelivered()
+    {
+        delivered = true;
+        OnDelivered?.Invoke();
+    }
+    
+    
+    
     
 }
 
+[System.Serializable]
 public struct PackageInfo
 {
-    private int size;
+    public int size;
+    public PackageInfo(int size =1)
+    {
+        this.size = size;
+    }
 }
 
+[System.Serializable]
 public class Consumer
 {
-    private string name;
-    private Sprite portrait;
+    public string name;
+    public Sprite portrait;
+    public Vector3 position;
 }
 
 public enum OrderState
