@@ -22,6 +22,7 @@ public abstract class VehicleScript : MonoBehaviour
     [HideInInspector] public bool isAtMailOffice = true;
 
     public float carbonFootPrint = 5;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -32,15 +33,26 @@ public abstract class VehicleScript : MonoBehaviour
 
     public void CarMove()
     {
+        float tempPath;
+        float nearestPath = 999f;
+        Vector3 positionToGoTo = new Vector3();
         if (positions.Count > 0)
         {
-            agent.SetDestination(positions[0].transform.position);
+            foreach (var position in positions)
+            {
+                tempPath = Vector3.Distance(transform.position, position.transform.position);
+                if (tempPath < nearestPath)
+                {
+                    nearestPath = tempPath;
+                    positionToGoTo = position.transform.position;
+                }
+            }
+            agent.SetDestination(positionToGoTo);
         }
         else
         {
             agent.SetDestination(office.transform.position);
             PackageManager.DeliveriesReset();
-            Debug.Log("Hello");
         }
     }
 
