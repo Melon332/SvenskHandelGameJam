@@ -13,6 +13,8 @@ public abstract class VehicleScript : MonoBehaviour
 
     public VehicleInfo vehicleInfo;
 
+    public bool isDoneDelivering = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,7 @@ public abstract class VehicleScript : MonoBehaviour
     }
     public void CarMove()
     {
-        float nearestPath = 9999f;
+        float nearestPath = -1f;
         Vector3 positionToGoTo = new Vector3();
         var positions = this.vehicleInfo.GetOrderPositions();
         if (positions.Count > 0)
@@ -35,7 +37,7 @@ public abstract class VehicleScript : MonoBehaviour
             foreach (var position in positions)
             {
                 float tempPath = Vector3.Distance(transform.position, position);
-                if (tempPath < nearestPath)
+                if (tempPath < nearestPath || nearestPath == -1f)
                 {
                     nearestPath = tempPath;
                     positionToGoTo = position;
@@ -46,6 +48,7 @@ public abstract class VehicleScript : MonoBehaviour
         else
         {
             agent.SetDestination(office.transform.position);
+            isDoneDelivering = true;
         }
     }
 }

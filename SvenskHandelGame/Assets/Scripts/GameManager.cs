@@ -58,19 +58,18 @@ public class GameManager : MonoBehaviour
         {
             var vehicleInfo = new VehicleInfo(v.vehicleData);
             
-            // TODO: CREATE VEHICLE UI PREFABS
-            // create the UI vehicles and assign them the vehicle info.
-            //  EXAMPLE:    VehicleUI ui = Instantiate(uiprefab);
-
             var vechileUI = Instantiate(vehicleUI,vehicleLayoutGroup.transform);
 
             vechileUI.GetComponent<UIVehicle>().Init(vehicleInfo);
             
-            vehicleInfo.OnReset += () => {   /* UI vehicle Reset method */ };
+            vehicleInfo.OnReset += () => {  vechileUI.ResetUI(); };
 
             vehicles.Add(vehicleInfo);
-            
-            
+
+            for (int i = 0; i < 30;i++)
+            {
+                CreateNewOrder();
+            }
         }
         
     }
@@ -82,6 +81,9 @@ public class GameManager : MonoBehaviour
         PackageInfo[] package = new PackageInfo[1] {new PackageInfo()};
         OrderInfo order = new OrderInfo(package,consumer);
         
+        orders.Add(order);
+        
+        
         //TODO: CREATE ORDER PREFAB
         
     }
@@ -89,6 +91,25 @@ public class GameManager : MonoBehaviour
 
     public void SendVehicle(VehicleInfo vehicleInfo)
     {
+        //           TEMPORARY SOLUTION!!! TODO: REMOVE
+        //                  ADD ORDERS TO CAR
+        // ________________________________________________________
+        
+        foreach (var order in orders)
+        {
+            if (order.avaliable)
+            {
+                vehicleInfo.AddOrder(order);
+            }
+        }
+        // ________________________________________________________
+        
+        
+        
+        foreach (var order in vehicleInfo.GetOrders())
+        {
+            order.avaliable = false;
+        }
         vehicleInfo.Avaliable = false;
         var vehicle = Instantiate(vehiclePrefab, office.transform.position,quaternion.identity);
         vehicle.Init(vehicleInfo);

@@ -56,6 +56,16 @@ public class VehicleInfo
         }
     }
     
+    public bool AddOrder(OrderInfo order)
+    {
+        if (orders.Count + order.GetSize() <= vehicleData.size)
+        {
+            orders.Add(order);
+            return true;
+        }
+
+        return false;
+    }
     
     
     public List<Vector3> GetOrderPositions()

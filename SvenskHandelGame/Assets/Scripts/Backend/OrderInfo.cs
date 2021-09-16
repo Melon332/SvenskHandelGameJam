@@ -11,6 +11,7 @@ public class OrderInfo
     private float timer;
     private OrderState orderState;
     public bool delivered { get; private set; }
+    public bool avaliable = true;
 
 
     public Action OnDelivered;
@@ -21,6 +22,16 @@ public class OrderInfo
         this.packages = packages;
         this.consumer = consumer;
         delivered = false;
+    }
+
+    public int GetSize()
+    {
+        int size = 0;
+        foreach (var package in packages)
+        {
+            size += package.size;
+        }
+        return size;
     }
 
 
@@ -48,7 +59,7 @@ public class Consumer
     public string name;
     public Sprite portrait;
     public PackageLocation location;
-    public Vector3 position => location.transform.position;
+    public Vector3 position => location.position;
 
     public Consumer(PackageLocation location)
     {
