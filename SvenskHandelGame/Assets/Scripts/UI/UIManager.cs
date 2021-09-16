@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
         {
             if (_playerManager.currentSelectedVehicle.isAtMailOffice)
             {
-                _playerManager.currentSelectedVehicle.CarMove(_playerManager.currentSelectedVehicle.positions);
+                _playerManager.currentSelectedVehicle.CarMove();
                 _playerManager.currentSelectedVehicle.isAtMailOffice = false;
             }
             else
@@ -68,9 +68,11 @@ public class UIManager : MonoBehaviour
             if (_playerManager.currentSelectedVehicle.packages.Count <
                 _playerManager.currentSelectedVehicle.maxAllowedOfPackages)
             {
-                if (_playerManager.currentSelectedVehicle.positions.Contains(package.GetPackage().gameObject)) return;
+                if (_playerManager.currentSelectedVehicle.positions.Contains(package.GetPackage().gameObject))
+                    return;
                 _playerManager.currentSelectedVehicle.AddLocationToCar(package.GetPackage().gameObject);
                 _playerManager.currentSelectedVehicle.AddPackageToCar(package.GetPackage().packageWanted);
+                package.GetPackage().HasBeenActivated();
                 Destroy(button.gameObject);
             }
             else

@@ -16,7 +16,7 @@ public class PackageLocations : MonoBehaviour
     [HideInInspector] public bool hasBeenUsed = false;
     private void Awake()
     {
-        amountOfPackageWanted = Random.Range(2, 5);
+        amountOfPackageWanted = 1;
         FindObjectOfType<PackageManager>().locationsList.Add(this);
     }
     private void OnTriggerEnter(Collider other)
@@ -26,22 +26,27 @@ public class PackageLocations : MonoBehaviour
             //Gets the car that entered the box
             var car = other.GetComponent<VehicleScript>();
             if (car == null) return;
-            //Tells it to move to the next position
-            car.CarMove(car.positions);
-            hasBeenPassed = true;
-            //Removes the contained package
-            foreach (var package in packageWanted)
+            if (car.positions.Contains(gameObject))
             {
-                if (car.packages.Contains(package))
+                //Tells it to move to the next position
+                car.positions.Remove(gameObject);
+                car.CarMove();
+                hasBeenPassed = true;
+                //Removes the contained package
+                foreach (var package in packageWanted)
                 {
-                    car.packages.Remove(package);
-                }   
-                else
-                {
-                    Debug.Log("Oh no!");
+                    if (car.packages.Contains(package))
+                    {
+                        car.packages.Remove(package);
+                    }
+                    else
+                    {
+                        Debug.Log("Oh no!");
+                    }
                 }
+                packageWanted.Clear();
+                HasBeenDeactivated();
             }
-            packageWanted.Clear();
         }
     }
 
@@ -54,5 +59,6 @@ public class PackageLocations : MonoBehaviour
     public void HasBeenDeactivated()
     {
         hasBeenUsed = false;
+        GetComponent<MeshRenderer>().material.color = Color.grey;
     }
 }

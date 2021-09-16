@@ -20,7 +20,8 @@ public abstract class VehicleScript : MonoBehaviour
     public int maxAllowedOfPackages;
 
     [HideInInspector] public bool isAtMailOffice = true;
-    
+
+    public float carbonFootPrint = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +30,11 @@ public abstract class VehicleScript : MonoBehaviour
         agent.speed = speed;
     }
 
-    public void CarMove(List<GameObject> positions)
+    public void CarMove()
     {
-        if (this.positions.Count > 0)
+        if (positions.Count > 0)
         {
             agent.SetDestination(positions[0].transform.position);
-            this.positions.RemoveAt(0);
         }
         else
         {

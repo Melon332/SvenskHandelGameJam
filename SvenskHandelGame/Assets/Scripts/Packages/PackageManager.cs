@@ -37,7 +37,6 @@ public class PackageManager : MonoBehaviour
         {
             if (location.packageWanted.Count > 0 && !location.hasBeenUsed)
             {
-                location.HasBeenActivated();
                 return location;
             }
         }
