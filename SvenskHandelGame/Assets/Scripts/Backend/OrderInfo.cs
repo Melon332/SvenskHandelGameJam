@@ -22,6 +22,7 @@ public class OrderInfo
         this.packages = packages;
         this.consumer = consumer;
         delivered = false;
+        avaliable = true;
     }
 
     public int GetSize()

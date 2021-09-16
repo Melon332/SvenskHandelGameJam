@@ -19,7 +19,10 @@ public class VehicleInfo
         {
             if (avaliable == value) return;
             avaliable = value;
-            ResetVehicle();
+            if (avaliable)
+            {
+                ResetVehicle();
+            }
         }
     }
     
@@ -40,6 +43,9 @@ public class VehicleInfo
 
     public List<OrderInfo> GetOrders()
     {
+        List<OrderInfo>
+        
+        
         return orders.Where(order => !order.delivered).ToList();
     }
 
