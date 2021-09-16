@@ -47,8 +47,17 @@ public class VehicleInfo
     {
         return orders.Any(order => !order.delivered && consumer == order.consumer);
     }
-    
 
+    public void DeliverPackage(Consumer consumer)
+    {
+        foreach (var order in orders.Where(order => order.consumer == consumer))
+        {
+            order.SetDelivered();
+        }
+    }
+    
+    
+    
     public List<Vector3> GetOrderPositions()
     {
         return (from order in orders where !order.delivered select order.consumer.position).ToList();
