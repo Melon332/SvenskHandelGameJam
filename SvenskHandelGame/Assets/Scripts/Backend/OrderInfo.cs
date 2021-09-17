@@ -7,7 +7,7 @@ using UnityEngine;
 public class OrderInfo
 {
     public Consumer consumer { get; private set;}
-    public PackageInfo[] packages { get; private set;}
+    public PackageInformation[] packages { get; private set;}
     private float timer;
     private OrderState orderState;
     public bool delivered { get; private set; }
@@ -17,7 +17,7 @@ public class OrderInfo
     public Action OnDelivered;
     
 
-    public OrderInfo(PackageInfo[] packages,Consumer consumer)
+    public OrderInfo(PackageInformation[] packages,Consumer consumer)
     {
         this.packages = packages;
         this.consumer = consumer;
@@ -45,10 +45,10 @@ public class OrderInfo
 }
 
 [System.Serializable]
-public struct PackageInfo
+public struct PackageInformation
 {
     public int size;
-    public PackageInfo(int size =1)
+    public PackageInformation(int size =1)
     {
         this.size = size;
     }

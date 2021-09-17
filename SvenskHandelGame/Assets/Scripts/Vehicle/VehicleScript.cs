@@ -20,6 +20,20 @@ public abstract class VehicleScript : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         vehicleInfo = info;
         agent.speed = info.vehicleData.speed;
+        GameObject mesh = null;
+        switch (info.vehicleData.vehicleType)
+        {
+            case VehicleType.Bike:
+                mesh = GameManager.instance.BikeMesh;
+                break;
+            case VehicleType.Car:
+                mesh = GameManager.instance.CarMesh;
+                break;
+            case VehicleType.Truck:
+                mesh = GameManager.instance.TruckMesh;
+                break;
+        }
+        Instantiate(mesh, transform);
         CarMove();
     }
     public void CarMove()

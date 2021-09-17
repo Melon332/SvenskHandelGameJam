@@ -28,6 +28,7 @@ public class PackageLocation : MonoBehaviour
         {
             //Tells it to move to the next position and deliver a package
             vs.vehicleInfo.DeliverPackage(consumer);
+            SetActive(GameManager.HasActiveOrders(consumer));
             vs.CarMove();
         }
     }
@@ -37,8 +38,16 @@ public class PackageLocation : MonoBehaviour
     {
         foreach (var renderer in meshRenderers)
         {
-            
-            renderer.material.color = active ? GameColors.ActiveBuilding : GameColors.IdleBuilding ;
+            Material[] mats = new Material[renderer.materials.Length];
+            for (int i = 0; i < renderer.materials.Length; i++)
+            {
+                mats[i] =
+                    active
+                        ? GameManager.instance.gameColors.ActiveBuilding
+                        : GameManager.instance.gameColors.IdleBuilding;
+            }
+
+            renderer.materials = mats;
         }
     }
 

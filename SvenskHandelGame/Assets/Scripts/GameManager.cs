@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -22,6 +23,14 @@ public class GameManager : MonoBehaviour
     public MailOffice office;
 
     [SerializeField] private GameObject vehicleLayoutGroup;
+
+    public GameColors gameColors;
+    
+    [Space]
+    [Header("Vehicle Meshes :")]
+    public GameObject BikeMesh;
+    public GameObject CarMesh;
+    public GameObject TruckMesh;
 
 
     private void Awake()
@@ -82,7 +91,7 @@ public class GameManager : MonoBehaviour
     public void CreateNewOrder()
     {
         var consumer = consumers[Random.Range(0, consumers.Count)];
-        PackageInfo[] package = new PackageInfo[1] {new PackageInfo()};
+        PackageInformation[] package = new PackageInformation[1] {new PackageInformation()};
         OrderInfo order = new OrderInfo(package,consumer);
         
         orders.Add(order);
@@ -113,6 +122,7 @@ public class GameManager : MonoBehaviour
         foreach (var order in vehicleInfo.GetOrders())
         {
             order.avaliable = false;
+            order.consumer.location.SetActive(true);
         }
         vehicleInfo.Avaliable = false;
         var vehicle = Instantiate(vehiclePrefab, office.position,quaternion.identity);
@@ -125,10 +135,18 @@ public class GameManager : MonoBehaviour
         vehicleInfo.Avaliable = true;
     }
 
+    public static bool HasActiveOrders(Consumer consumer)
+    {
+        return instance.orders.Where(order => !order.avaliable && !order.delivered).Any(order => order.consumer == consumer);
+    }
+    
+    
+    
 }
-public static class GameColors
+[Serializable]
+public struct GameColors
 {
-    public static Color IdleBuilding = Color.gray;
-    public static Color ActiveBuilding = Color.red;
+    public Material IdleBuilding;
+    public Material ActiveBuilding;
 }
 

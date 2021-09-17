@@ -83,15 +83,24 @@ public class VehicleInfo
 [System.Serializable]
 public struct VehicleData
 {
+    public VehicleType vehicleType;
     public int   size;
     public float   speed;
     public float carbonFootprint;
     
-    public VehicleData(int size,float speed,int carbonFootprint)
+    public VehicleData(VehicleType vehicleType, int size,float speed,int carbonFootprint)
     {
+        this.vehicleType = vehicleType;
         this.size =  size;
         this.speed = speed;
         this.carbonFootprint = carbonFootprint;
     }
     
+}
+
+public enum VehicleType
+{
+    Bike,
+    Car,
+    Truck
 }

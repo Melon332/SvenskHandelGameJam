@@ -20,7 +20,9 @@ public class DeliveryPosition : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(0, 255, 0, .5f);
-        
-        Gizmos.DrawCube(transform.position,GetComponent<BoxCollider>().size);
+        var bcsiz = GetComponent<BoxCollider>().size;
+        var lossyScale = transform.lossyScale;
+        var size = new Vector3(lossyScale.x * bcsiz.x,lossyScale.y * bcsiz.y,lossyScale.z * bcsiz.z);
+        Gizmos.DrawCube(transform.position,size);
     }
 }

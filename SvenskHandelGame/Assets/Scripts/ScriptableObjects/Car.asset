@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Car
   m_EditorClassIdentifier: 
   vehicleData:
+    vehicleType: 1
     size: 4
-    speed: 15
+    speed: 3
     carbonFootprint: 6
