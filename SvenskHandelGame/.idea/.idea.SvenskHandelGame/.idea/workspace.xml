@@ -3,13 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="9eddb4ee-a304-4636-b0f9-abd606c448f9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SvenskHandelGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SvenskHandelGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/DeliveryPosition.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/DeliveryPosition.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Truck.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Truck.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MehmetScene/NavMesh.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MehmetScene/NavMesh.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Backend/VehicleInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Backend/VehicleInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Car 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Car 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MainCanvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/MainCanvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/RandomPackageSpawn.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/RandomPackageSpawn.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MehmetScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MehmetScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DragDrop/DragDrop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DragDrop/DragDrop.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DragDrop/ItemSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DragDrop/ItemSlot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MailOffice/MailOffice.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MailOffice/MailOffice.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Vehicle/VehicleScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Vehicle/VehicleScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UIVehicle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIVehicle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +23,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/SendCars.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/557582342da74bda81750981f39bf6bf3c400/33/13870466/IDropHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/OrderUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UIVehicle.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -75,6 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1631795061676</updated>
       <workItem from="1631795068722" duration="3532000" />
+      <workItem from="1631863023501" duration="8232000" />
     </task>
     <servers />
   </component>

@@ -1554,20 +1554,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 913c502546b21ab4897fd7acaa09329f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vehicles: []
   vehiclePresets:
   - {fileID: 11400000, guid: ce0b130d182099c44934d7be961d9e3d, type: 2}
   - {fileID: 11400000, guid: 238afd739a835e24eb594676569478d2, type: 2}
   - {fileID: 11400000, guid: b1de00d70f56e2f49ae115e2738dd7e3, type: 2}
   vehiclePrefab: {fileID: 2109927775554476947, guid: c4b3d8d6873d4164baec00abf0154553, type: 3}
   vehicleUI: {fileID: 5839835462236698110, guid: 3f1cf086ee0ce3b479a508dfc15c1b70, type: 3}
+  orderUI: {fileID: 7440722030588595873, guid: 85cf3e16656431f4889bd5bd2f5ed7c8, type: 3}
   office: {fileID: 780940693}
   vehicleLayoutGroup: {fileID: 1189322173}
+  orderInfoLayoutGroup: {fileID: 1755633912}
   gameColors:
     IdleBuilding: {fileID: 2100000, guid: f65168edaa2eec744962e6d259f92105, type: 2}
     ActiveBuilding: {fileID: 2100000, guid: ada34c4fdcb60ac408a26724dee8f03c, type: 2}
   BikeMesh: {fileID: 6777353224801753742, guid: 22e9947502e89b448977dcddb291dd5b, type: 3}
   CarMesh: {fileID: 6777353224801753742, guid: abe6b91c02fad7a418705a54c5887ff2, type: 3}
   TruckMesh: {fileID: 6777353224801753742, guid: 8222667f1a90384429f14a9bc6bd8428, type: 3}
+  currentCarSelected:
+    vehicleData:
+      vehicleType: 0
+      size: 0
+      speed: 0
+      carbonFootprint: 0
+  mainCanvas: {fileID: 1367108134}
 --- !u!4 &408753984
 Transform:
   m_ObjectHideFlags: 0
@@ -5766,6 +5776,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f34b7500a67a7b44e8f2d06ad3523cfd, type: 3}
+--- !u!223 &1367108134 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 8972357124819251877, guid: 71f0be5d36cbc524bb008c611e2053e9, type: 3}
+  m_PrefabInstance: {fileID: 2035138214}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1384569186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7273,6 +7288,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732471519}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1755633912 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1921139292467321491, guid: 71f0be5d36cbc524bb008c611e2053e9, type: 3}
+  m_PrefabInstance: {fileID: 2035138214}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1759593520
 GameObject:
   m_ObjectHideFlags: 0
@@ -7906,6 +7926,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5071603596897552429, guid: 71f0be5d36cbc524bb008c611e2053e9, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071603596897552429, guid: 71f0be5d36cbc524bb008c611e2053e9, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071603596897552429, guid: 71f0be5d36cbc524bb008c611e2053e9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -96.414314
+      objectReference: {fileID: 0}
     - target: {fileID: 8972357124819251876, guid: 71f0be5d36cbc524bb008c611e2053e9, type: 3}
       propertyPath: m_Pivot.x
       value: 0

@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _playerManager = FindObjectOfType<PlayerManager>();
-        AddRandomizePackageButtonToPanel();
+        //AddRandomizePackageButtonToPanel();
         
     }
 

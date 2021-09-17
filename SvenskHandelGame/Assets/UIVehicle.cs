@@ -5,17 +5,18 @@ using UnityEngine.UI;
 
 public class UIVehicle : MonoBehaviour
 {
-    private VehicleInfo info;
+    [HideInInspector] public VehicleInfo info;
 
     public void Init(VehicleInfo info)
     {
         this.info = info;
+        GetComponentInChildren<Text>().text = info.vehicleData.vehicleType.ToString();
     }
 
-    public void SendVehicle()
+    public void SelectVehicle()
     {
         if (!info.Avaliable) return;
-        GameManager.instance.SendVehicle(info);
+        GameManager.instance.SelectVehcile(info);
     }
 
     public void ResetUI()
