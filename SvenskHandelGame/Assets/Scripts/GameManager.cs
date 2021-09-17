@@ -188,6 +188,11 @@ public class GameManager : MonoBehaviour
             TruckPackages.text = "The truck has: " + info.GetOrders().Count+"/"+ info.vehicleData.size + " Packages";
         }
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
     
 }
 [Serializable]
