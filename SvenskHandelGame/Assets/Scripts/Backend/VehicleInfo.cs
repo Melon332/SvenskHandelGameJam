@@ -56,6 +56,7 @@ public class VehicleInfo
         foreach (var order in orders.Where(order => order.consumer == consumer))
         {
             order.SetDelivered();
+            GameManager.instance.UpdatePackages(this);
         }
     }
     
