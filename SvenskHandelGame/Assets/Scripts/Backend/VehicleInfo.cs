@@ -10,6 +10,7 @@ public class VehicleInfo
     private List<OrderInfo> orders = new List<OrderInfo>();
     private bool avaliable;
     public Action OnReset;
+    public Action onUpdate;
     
     
     public bool Avaliable
@@ -19,6 +20,7 @@ public class VehicleInfo
         {
             if (avaliable == value) return;
             avaliable = value;
+            onUpdate.Invoke();
             if (avaliable)
             {
                 ResetVehicle();

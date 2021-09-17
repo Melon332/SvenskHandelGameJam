@@ -10,6 +10,9 @@ public class PackageLocation : MonoBehaviour
     public MeshRenderer[] meshRenderers;
     private DeliveryPosition deliveryPosition;
     public Vector3 position => deliveryPosition.transform.position;
+
+    private bool active = false;
+    
     
     private void Awake()
     {
@@ -36,19 +39,36 @@ public class PackageLocation : MonoBehaviour
     
     public void SetActive(bool active)
     {
-        foreach (var renderer in meshRenderers)
-        {
-            Material[] mats = new Material[renderer.materials.Length];
-            for (int i = 0; i < renderer.materials.Length; i++)
-            {
-                mats[i] =
-                    active
-                        ? GameManager.instance.gameColors.ActiveBuilding
-                        : GameManager.instance.gameColors.IdleBuilding;
-            }
+        this.active = active;
+        UpdateMaterial();
+    }
 
-            renderer.materials = mats;
+    public void UpdateMaterial()
+    {
+        if (GameManager.instance.currentlySelectedOrder.consumer == consumer)
+        {
+            
         }
+        foreach (var renderer in meshRenderers)
+                {
+                    Material[] mats = new Material[renderer.materials.Length];
+                    for (int i = 0; i < renderer.materials.Length; i++)
+                    {
+                        
+                        mats[i] =
+                            active
+                                ? GameManager.instance.gameColors.ActiveBuilding
+                                : GameManager.instance.gameColors.IdleBuilding;
+                        if (GameManager.instance.currentlySelectedOrder.consumer == consumer)
+                        {
+                            mats[i] = GameManager.instance.gameColors.SelectedBuilding;
+                        }
+                        
+                        
+                    }
+        
+                    renderer.materials = mats;
+                }
     }
 
 }

@@ -13,7 +13,6 @@ public class OrderInfo
     public bool delivered { get; private set; }
     public bool avaliable = true;
 
-
     public Action OnDelivered;
     
 

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bike
   m_EditorClassIdentifier: 
   vehicleData:
+    vehicleType: 0
     size: 2
-    speed: 0.5
+    speed: 25
     carbonFootprint: 0

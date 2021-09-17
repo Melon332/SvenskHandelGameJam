@@ -25,11 +25,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         canvasGroup.blocksRaycasts = false;
         GetComponent<Image>().maskable = false;
         currentPosOfDraggedObject = rectTransform.position;
+        GameManager.instance.currentlySelectedOrder = GetComponent<OrderUI>().orderInfo;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("OnDrag");
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
@@ -45,7 +45,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         }
         else
         {
-           Destroy(gameObject); 
+           //Destroy(gameObject); 
         }
     }
 
@@ -56,6 +56,5 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnDrop(PointerEventData eventData)
     {
-
     }
 }
