@@ -16,8 +16,11 @@ public class OrderUI : MonoBehaviour
 
     public void AddOrder(VehicleInfo info)
     {
-        info.AddOrder(orderInfo);
-        Destroy(gameObject);
-        Debug.Log("Added order");
+        if (info.Avaliable)
+        {
+            info.AddOrder(orderInfo);
+            Destroy(gameObject);
+            Debug.Log("Added order");
+        }
     }
 }
