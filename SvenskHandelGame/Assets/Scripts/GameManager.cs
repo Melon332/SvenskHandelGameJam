@@ -135,12 +135,14 @@ public class GameManager : MonoBehaviour
             order.avaliable = false;
             order.consumer.location.SetActive(true);
         }
-        
-        
-        vehicleInfo.Avaliable = false;
-        var vehicle = Instantiate(vehiclePrefab, office.position,quaternion.identity);
-        vehicle.Init(vehicleInfo);
-        
+
+        if (vehicleInfo.Avaliable)
+        {
+            vehicleInfo.Avaliable = false;
+            var vehicle = Instantiate(vehiclePrefab, office.position, quaternion.identity);
+            vehicle.Init(vehicleInfo);
+        }
+
     }
 
     public void SelectVehcile(VehicleInfo info)
