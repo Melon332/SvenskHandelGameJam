@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9eddb4ee-a304-4636-b0f9-abd606c448f9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SvenskHandelGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SvenskHandelGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DragDrop/ItemSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DragDrop/ItemSlot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/OrderUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/OrderUI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +77,7 @@
       <option name="presentableId" value="Default" />
       <updated>1631795061676</updated>
       <workItem from="1631795068722" duration="3532000" />
-      <workItem from="1631863023501" duration="13561000" />
+      <workItem from="1631863023501" duration="14155000" />
     </task>
     <servers />
   </component>
